@@ -1,0 +1,11 @@
+.text {
+  margin-bottom: 2.5rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  background: linear-gradient(to right, #30cfd0, #c43ad6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
+  font-weight: bold;
+  cursor: pointer;
+}
