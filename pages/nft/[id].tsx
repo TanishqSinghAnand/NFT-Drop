@@ -21,7 +21,7 @@ function NFTDropPage({ collection }: Props) {
   const [claimedSupply, setClaimedSupply] = useState<number>(0)
   const [quantity, setQuantity] = useState<number>(1)
   const [totalSupply, setTotalSupply] = useState<BigNumber>()
-  const [priceInETH, setPriceInETH] = useState<string>()
+  const [priceInETH, setPriceInETH] = useState<number>()
   const [loading, setLoading] = useState<boolean>(true)
   const nftDrop = useNFTDrop(collection.address)
   // AUTH
@@ -35,7 +35,7 @@ function NFTDropPage({ collection }: Props) {
     if (!nftDrop) return
     const fetchPrice = async () => {
       const claimConditions = await nftDrop.claimConditions.getAll()
-      setPriceInETH(claimConditions?.[0].currencyMetadata.displayValue)
+      setPriceInETH(Number(claimConditions?.[0].currencyMetadata.displayValue))
     }
     fetchPrice()
   }, [])
@@ -120,7 +120,7 @@ function NFTDropPage({ collection }: Props) {
   }
 
   return (
-    <div className="flex h-screen flex-col overflow-y-hidden bg-black text-white lg:grid lg:grid-cols-10">
+    <div className="flex h-screen flex-col bg-black text-white lg:grid lg:grid-cols-10 lg:overflow-y-hidden">
       <Toaster position="bottom-center" />
       {/* Left */}
       <div className="bg-gradient-to-br from-cyan-800 to-rose-500 lg:col-span-4">
@@ -142,7 +142,7 @@ function NFTDropPage({ collection }: Props) {
       </div>
 
       {/* Right */}
-      <div className="col-span-6 flex flex-1 flex-col p-12">
+      <div className="col-span-6 flex flex-1 flex-col bg-black p-12">
         {/* Header */}
         <header className="flex items-center justify-between">
           <Link href={'/marketplace'}>
@@ -202,7 +202,10 @@ function NFTDropPage({ collection }: Props) {
           <button
             onClick={mintNft}
             disabled={
-              loading || claimedSupply === totalSupply?.toNumber() || !address || quantity == 0
+              loading ||
+              claimedSupply === totalSupply?.toNumber() ||
+              !address ||
+              quantity == 0
             }
             className="h-16 w-[90%] rounded-full bg-red-500 font-bold text-white shadow-md shadow-white hover:scale-105 disabled:bg-gray-400 disabled:shadow-sm"
           >
@@ -216,7 +219,7 @@ function NFTDropPage({ collection }: Props) {
               <>Select a Number</>
             ) : (
               <span className="font-bold">
-                Mint NFT ({priceInETH * quantity} ETH)
+                Mint NFT ({Number(priceInETH) * quantity} ETH)
               </span>
             )}
           </button>
@@ -228,7 +231,7 @@ function NFTDropPage({ collection }: Props) {
               max="9"
               step="1"
               onChange={(e) => {
-                setQuantity(e?.target?.value)
+                setQuantity(Number(e?.target?.value))
               }}
               value={quantity}
             />
