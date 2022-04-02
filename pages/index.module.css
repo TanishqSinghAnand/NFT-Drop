@@ -2,7 +2,7 @@
   text-align: center;
   text-decoration: underline;
   font-size: 5rem; /* 72px */
-    line-height: 1;
+  line-height: 1;
   font-family: monospace;
   letter-spacing: 5px;
   background: linear-gradient(
@@ -16,7 +16,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: rainbow_animation 6s ease-in-out infinite;
+  animation: rainbow_animation 6s ease-in-out infinite,
+    typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
   background-size: 400% 100%;
 }
 
@@ -28,5 +29,24 @@
 
   50% {
     background-position: 100% 0;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
   }
 }

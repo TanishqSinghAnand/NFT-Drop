@@ -29,10 +29,9 @@ function Marketplace({ collections }: Props) {
           </h1>
         </Link>
 
-        <main className=" bg-black p-10 shadow-2xl shadow-green-400 rounded-2xl">
-          <div className="grid space-x-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 space-y-12 md:space-y-0">
+        <main className=" rounded-2xl bg-black p-10 shadow-2xl shadow-green-400">
+          <div className="grid space-x-2 space-y-12 md:grid-cols-2 md:space-y-0 lg:grid-cols-3 2xl:grid-cols-4 gap-y-4 gap-x-3">
             {collections.map((collection) => (
-                
               <NftCard collection={collection} key={collection._id} />
             ))}
           </div>
@@ -70,7 +69,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }`
   const collections = await sanityClient.fetch(query)
-  // console.log(collections)
   return {
     props: {
       collections,
