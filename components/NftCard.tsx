@@ -1,7 +1,6 @@
 import { urlFor } from '../sanity'
 import { Collection } from '../typings'
 import 'ui-neumorphism/dist/index.css'
-import { Body2, Card, CardContent, H5, Subtitle2 } from 'ui-neumorphism'
 import Link from 'next/link'
 import styles from './NftCard.module.css'
 

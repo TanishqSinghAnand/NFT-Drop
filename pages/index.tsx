@@ -14,15 +14,18 @@ interface Props {
 
 const Home = () => {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-[#29ffc6] via-[#20e3b2] to-[#0cebeb] text-white">
+    <div className='min-w-screen h-screen'>
+
       <Head>
         <title>NFT DROP</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+    <div className="flex h-[100vh] w-[100vw] flex-col items-center justify-center bg-gradient-to-br from-[#29ffc6] via-[#20e3b2] to-[#0cebeb] text-white">
 
-      <div className="flex max-w-[70%] flex-col items-center justify-center space-y-1">
+      <div className="flex md:max-w-[70%] flex-col items-center justify-center space-y-1">
         <h3 className="text-lg font-bold text-gray-600">Welcome to Delta</h3>
-        <h1 className="text-center text-7xl font-extrabold text-gray-900">
+        <h1 className="text-center text-2xl lg:text-7xl font-extrabold text-gray-900">
           <span className={styles.rainbow}>
               The most advanced NFT Drop MarketPlace.
           </span>
@@ -33,6 +36,7 @@ const Home = () => {
           Check out MarketPlace
         </button>
       </Link>
+    </div>
     </div>
   )
 }
